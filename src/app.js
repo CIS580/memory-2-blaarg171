@@ -24,6 +24,9 @@ var card1;
 var card2;
 console.log(board);
 
+
+// add sounds, 
+
 // TODO: Place the cards on the board in random order
 
 canvas.onclick = function(event) {
@@ -31,8 +34,8 @@ canvas.onclick = function(event) {
   // TODO: determine which card was clicked on
   // TODO: determine what to do
   
-  var x = Math.floor((event.x-3)/165);
-  var y = Math.floor((event.y-3)/165);
+  var x = Math.floor(((event.x-event.offsetx)-3)/165);
+  var y = Math.floor(((event.y-event.offsety)-3)/165);
   var card = board[y*6+x];
   if(!card || card.flip) return;
   card.flip = true;
@@ -40,6 +43,7 @@ canvas.onclick = function(event) {
 	case "waiting for click 1":
 	  card1=card;
 	  state = "waiting for click 2";
+	  //play sound
 	  break;
 	  
 	case "waiting for click 2":
@@ -54,6 +58,7 @@ canvas.onclick = function(event) {
 		player = +!player;
 		}
 	  }, 3000);
+	  //play sound
 	  break;
   }
 }
